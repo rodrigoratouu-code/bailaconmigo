@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Clases de baile latino en Barcelona. Salsa, bachata y merengue para niños, adultos y mayores. A domicilio o en casa del instructor. Primera clase de prueba gratis.">
+<title>Baila Conmigo · Clases de Baile Latino en Barcelona</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral: #E8472A;
+    --coral-light: #FF6B47;
+    --gold: #F5A623;
+    --gold-light: #FFD166;
+    --dark: #1A1209;
+    --dark-mid: #2D2010;
+    --cream: #FFF8EE;
+    --cream-dark: #F5E8D0;
+    --green: #2D6A4F;
+    --green-light: #52B788;
+    --text: #3D2B1F;
+    --white: #FFFFFF;
+    --wa-green: #25D366;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── STICKY WA BUTTON ── */
+  .wa-sticky {
+    position: fixed;
+    bottom: 24px;
+    right: 20px;
+    z-index: 999;
+    background: var(--wa-green);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 14px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 30px rgba(37,211,102,0.45);
+    cursor: pointer;
+    text-decoration: none;
+    animation: pulse-wa 2.5s infinite;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .wa-sticky:hover { transform: scale(1.05); box-shadow: 0 12px 40px rgba(37,211,102,0.6); }
+  .wa-sticky svg { width: 22px; height: 22px; flex-shrink: 0; }
+  @keyframes pulse-wa {
+    0%, 100% { box-shadow: 0 8px 30px rgba(37,211,102,0.45); }
+    50% { box-shadow: 0 8px 40px rgba(37,211,102,0.7); }
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(26,18,9,0.95);
+    backdrop-filter: blur(12px);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+  }
+  .nav-logo span { color: var(--coral-light); font-style: italic; }
+  .nav-cta {
+    background: var(--wa-green);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 9px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .nav-cta:hover { background: #1fb955; transform: scale(1.03); }
+  .nav-cta svg { width: 16px; height: 16px; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100svh;
+    background:
+      linear-gradient(160deg, rgba(26,18,9,0.78) 0%, rgba(232,71,42,0.45) 60%, rgba(26,18,9,0.9) 100%),
+      url('https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=1200&q=80') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 28px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(245,166,35,0.15) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    background: var(--gold);
+    color: var(--dark);
+    border-radius: 50px;
+    padding: 6px 18px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: inline-block;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 7vw, 4rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.12;
+    margin-bottom: 18px;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .hero p {
+    font-size: clamp(1rem, 3.5vw, 1.2rem);
+    color: rgba(255,255,255,0.85);
+    font-weight: 300;
+    max-width: 520px;
+    line-height: 1.6;
+    margin-bottom: 36px;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+  .hero-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    max-width: 360px;
+    animation: fadeUp 0.7s 0.3s ease both;
+  }
+  .btn-wa {
+    background: var(--wa-green);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 18px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-wa:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(37,211,102,0.55); }
+  .btn-wa svg { width: 22px; height: 22px; }
+  .btn-outline {
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.5);
+    color: white;
+    border-radius: 14px;
+    padding: 16px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: white; }
+  .hero-scroll {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.5);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .hero-scroll-line {
+    width: 1px;
+    height: 32px;
+    background: rgba(255,255,255,0.3);
+    animation: scrollLine 1.5s infinite;
+  }
+  @keyframes scrollLine {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    background: var(--dark);
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    overflow: hidden;
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .trust-item span.icon { font-size: 1.1rem; }
+  .trust-divider { color: rgba(255,255,255,0.2); font-size: 1.2rem; }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 72px 24px; }
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.18;
+    color: var(--dark);
+    margin-bottom: 18px;
+  }
+  .section-title em { font-style: italic; color: var(--coral); }
+  .section-body {
+    font-size: 1rem;
+    line-height: 1.72;
+    color: #5A4030;
+    font-weight: 400;
+    max-width: 600px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+
+  /* ── SOBRE EL SERVICIO ── */
+  .sobre {
+    background: var(--white);
+  }
+  .sobre-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .sobre-img-wrap {
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(232,71,42,0.18);
+    aspect-ratio: 4/3;
+    position: relative;
+  }
+  .sobre-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .sobre-img-badge {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: var(--gold);
+    color: var(--dark);
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
+  .sobre-img-badge span { display: block; font-weight: 400; font-size: 0.75rem; opacity: 0.8; }
+  .highlights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .highlight-chip {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--dark-mid);
+    border: 1.5px solid var(--cream-dark);
+  }
+  .highlight-chip .chip-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* ── PÚBLICO / CARDS ── */
+  .publico { background: var(--cream); }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 40px;
+  }
+  .card {
+    border-radius: 20px;
+    padding: 28px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.14); }
+  .card-ninos { background: linear-gradient(135deg, #FFE066 0%, #FFB830 100%); color: var(--dark); }
+  .card-adultos { background: linear-gradient(135deg, #E8472A 0%, #C1280F 100%); color: white; }
+  .card-mayores { background: linear-gradient(135deg, #2D6A4F 0%, #1B4332 100%); color: white; }
+  .card-familias {
+    grid-column: span 2;
+    background: linear-gradient(135deg, #1A1209 0%, #2D2010 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .card-emoji { font-size: 2.4rem; margin-bottom: 12px; display: block; }
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .card p { font-size: 0.82rem; line-height: 1.55; opacity: 0.85; }
+  .card-familias .card-emoji { margin-bottom: 0; font-size: 3rem; }
+  .card-familias .card-text h3 { font-size: 1.2rem; margin-bottom: 6px; }
+  .card-familias .card-text p { font-size: 0.85rem; opacity: 0.8; max-width: 480px; }
+  .card-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 50px;
+    padding: 3px 10px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ── ESTILOS DE BAILE ── */
+  .estilos { background: var(--dark); }
+  .estilos .section-title { color: white; }
+  .estilos .section-title em { color: var(--gold-light); }
+  .estilos .section-label { color: var(--gold); }
+  .estilos .section-body { color: rgba(255,255,255,0.65); }
+  .ritmos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 40px;
+  }
+  .ritmo-card {
+    border: 1.5px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 28px 16px;
+    text-align: center;
+    transition: border-color 0.3s, background 0.3s, transform 0.25s;
+    cursor: default;
+  }
+  .ritmo-card:hover {
+    border-color: var(--gold);
+    background: rgba(245,166,35,0.07);
+    transform: translateY(-3px);
+  }
+  .ritmo-emoji { font-size: 2.5rem; margin-bottom: 12px; display: block; }
+  .ritmo-card h3 {
+    font-family: 'Playfair Display', serif;
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .ritmo-card p { color: rgba(255,255,255,0.5); font-size: 0.78rem; line-height: 1.5; }
+
+  /* ── BENEFICIOS ── */
+  .beneficios { background: var(--coral); }
+  .beneficios .section-label { color: rgba(255,255,255,0.7); }
+  .beneficios .section-title { color: white; }
+  .beneficios .section-title em { color: var(--gold-light); }
+  .beneficios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 40px;
+  }
+  .beneficio {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 18px;
+    padding: 22px 18px;
+    backdrop-filter: blur(8px);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .beneficio:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+  .beneficio-icon { font-size: 1.8rem; margin-bottom: 10px; display: block; }
+  .beneficio h4 { color: white; font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+  .beneficio p { color: rgba(255,255,255,0.75); font-size: 0.8rem; line-height: 1.5; }
+
+  /* ── CÓMO FUNCIONA ── */
+  .como { background: var(--white); }
+  .pasos {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 40px;
+    position: relative;
+  }
+  .pasos::before {
+    content: '';
+    position: absolute;
+    left: 23px;
+    top: 36px;
+    bottom: 36px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), var(--coral));
+  }
+  .paso {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 20px 0;
+  }
+  .paso-num {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--dark);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 16px rgba(245,166,35,0.4);
+    position: relative;
+    z-index: 1;
+  }
+  .paso:last-child .paso-num { background: var(--coral); box-shadow: 0 4px 16px rgba(232,71,42,0.4); color: white; }
+  .paso-content { padding-top: 10px; }
+  .paso-content h4 { font-size: 1rem; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
+  .paso-content p { font-size: 0.87rem; color: #7A5C4A; line-height: 1.55; }
+
+  /* ── UBICACIÓN ── */
+  .ubicacion {
+    background: var(--cream-dark);
+    text-align: center;
+  }
+  .ubicacion-card {
+    background: white;
+    border-radius: 24px;
+    padding: 40px 28px;
+    max-width: 500px;
+    margin: 36px auto 0;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.08);
+  }
+  .ubicacion-icon { font-size: 3rem; margin-bottom: 16px; display: block; }
+  .ubicacion-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 12px;
+  }
+  .ubicacion-card p { color: #7A5C4A; line-height: 1.65; font-size: 0.95rem; margin-bottom: 10px; }
+  .barrios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .barrio-chip {
+    background: var(--cream);
+    border: 1.5px solid var(--cream-dark);
+    border-radius: 50px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--dark-mid);
+  }
+
+  /* ── CTA PRINCIPAL ── */
+  .cta-main {
+    background:
+      linear-gradient(135deg, rgba(26,18,9,0.92) 0%, rgba(45,32,16,0.88) 100%),
+      url('https://images.unsplash.com/photo-1545959570-a94084071b5d?w=1200&q=80') center/cover no-repeat;
+    padding: 80px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-main::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 60%, rgba(232,71,42,0.25) 0%, transparent 65%);
+  }
+  .cta-main .section-label { color: var(--gold); }
+  .cta-main .section-title { color: white; margin-bottom: 14px; }
+  .cta-main .section-title em { color: var(--coral-light); }
+  .cta-main .section-body { color: rgba(255,255,255,0.7); margin: 0 auto 36px; }
+  .prueba-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245,166,35,0.15);
+    border: 1.5px solid rgba(245,166,35,0.4);
+    color: var(--gold-light);
+    border-radius: 50px;
+    padding: 8px 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 28px;
+  }
+  .cta-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--coral) 0%, var(--coral-light) 100%);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 18px 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    box-shadow: 0 8px 28px rgba(232,71,42,0.45);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(232,71,42,0.6); }
+  .btn-wa-big {
+    background: var(--wa-green);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 18px 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 8px 28px rgba(37,211,102,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-wa-big:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(37,211,102,0.55); }
+  .btn-wa-big svg { width: 22px; height: 22px; }
+
+  /* ── CONTACTO ── */
+  .contacto { background: var(--cream); }
+  .contacto-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .contacto-card {
+    background: white;
+    border-radius: 20px;
+    padding: 28px 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    text-decoration: none;
+    color: inherit;
+    border: 1.5px solid transparent;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+  .contacto-card:hover { border-color: var(--coral); box-shadow: 0 8px 32px rgba(232,71,42,0.14); transform: translateY(-2px); }
+  .contacto-card.wa:hover { border-color: var(--wa-green); box-shadow: 0 8px 32px rgba(37,211,102,0.2); }
+  .cc-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .cc-icon.phone { background: rgba(232,71,42,0.1); }
+  .cc-icon.wa-icon { background: rgba(37,211,102,0.1); }
+  .cc-icon svg { width: 26px; height: 26px; }
+  .cc-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #AAA; margin-bottom: 3px; }
+  .cc-value { font-size: 1.05rem; font-weight: 700; color: var(--dark); }
+  .cc-sub { font-size: 0.8rem; color: #AAA; margin-top: 2px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    padding: 36px 24px;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .footer-logo span { color: var(--coral-light); font-style: italic; }
+  footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-top: 4px; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE TABLET/DESKTOP ── */
+  @media (min-width: 640px) {
+    .sobre-inner { grid-template-columns: 1fr 1fr; }
+    .hero-btns { flex-direction: row; max-width: none; justify-content: center; }
+    .contacto-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (min-width: 768px) {
+    .ritmos-grid { gap: 20px; }
+    .cards-grid { gap: 20px; }
+    .beneficios-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 400px) {
+    .ritmos-grid { grid-template-columns: 1fr; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .card-familias { grid-column: span 1; }
+    .beneficios-grid { grid-template-columns: 1fr; }
+    .highlights { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 500px) {
+    .trust-divider { display: none; }
+    .trust-bar { gap: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Sticky WhatsApp -->
+<a href="https://wa.me/34600000000?text=Hola!%20Me%20interesa%20una%20clase%20de%20baile%20latino%20😊" class="wa-sticky" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  WhatsApp
+</a>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Baila<span>Conmigo</span></div>
+  <a href="https://wa.me/34600000000?text=Hola!%20Me%20interesa%20una%20clase%20de%20baile%20latino%20😊" class="nav-cta" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Escríbeme
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-badge">📍 Barcelona · Clases a domicilio disponibles</div>
+  <h1>Baila <em>fácil</em> y divertido<br>en tu casa o en la mía</h1>
+  <p>Clases de baile latino para todas las edades. Sin experiencia previa. Sin presión. Solo diversión y mucho ritmo.</p>
+  <div class="hero-btns">
+    <a href="https://wa.me/34600000000?text=Hola!%20Me%20interesa%20una%20clase%20de%20baile%20latino%20😊" class="btn-wa" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Pide tu primera clase gratis
+    </a>
+    <a href="#sobre" class="btn-outline">Saber más ↓</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="icon">🎁</span> Primera clase gratis</div>
+  <div class="trust-divider">·</div>
+  <div class="trust-item"><span class="icon">🏠</span> A domicilio o en casa del profe</div>
+  <div class="trust-divider">·</div>
+  <div class="trust-item"><span class="icon">👨‍👩‍👧</span> Todas las edades</div>
+  <div class="trust-divider">·</div>
+  <div class="trust-item"><span class="icon">🎵</span> Salsa · Bachata · Merengue</div>
+</div>
+
+<!-- SOBRE -->
+<section class="sobre" id="sobre">
+  <div class="container">
+    <div class="sobre-inner">
+      <div class="sobre-img-wrap">
+        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&q=80" alt="Clases de baile latino" loading="lazy">
+        <div class="sobre-img-badge">
+          ⭐⭐⭐⭐⭐
+          <span>Alumnos felices en Barcelona</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="section-label">Sobre el servicio</p>
+        <h2 class="section-title">Aprende a tu<br><em>propio ritmo</em></h2>
+        <p class="section-body">Las clases son 100% personalizadas y adaptadas a ti. No importa si nunca has bailado — empezamos desde cero, con pasos sencillos, buena música y mucha alegría. Sin vergüenza, sin presión, solo tú y el baile.</p>
+        <div class="highlights">
+          <div class="highlight-chip"><span class="chip-icon">🏠</span> Voy a tu casa</div>
+          <div class="highlight-chip"><span class="chip-icon">🎓</span> O en mi espacio</div>
+          <div class="highlight-chip"><span class="chip-icon">🕐</span> Horario flexible</div>
+          <div class="highlight-chip"><span class="chip-icon">💰</span> Precio justo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PÚBLICO -->
+<section class="publico" id="publico">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">¿Para quién?</p>
+      <h2 class="section-title">Para <em>todo el mundo</em></h2>
+    </div>
+    <div class="cards-grid">
+      <div class="card card-ninos reveal">
+        <div class="card-badge">4–12 años</div>
+        <span class="card-emoji">🧒</span>
+        <h3>Niños</h3>
+        <p>Coordinación, ritmo y diversión desde pequeños. Las clases son juego y baile a partes iguales.</p>
+      </div>
+      <div class="card card-adultos reveal">
+        <div class="card-badge">18–60 años</div>
+        <span class="card-emoji">💃</span>
+        <h3>Adultos</h3>
+        <p>Para salir a bailar con confianza, conocer gente nueva o simplemente disfrutar de una nueva afición.</p>
+      </div>
+      <div class="card card-mayores reveal">
+        <div class="card-badge">60+ años</div>
+        <span class="card-emoji">👴</span>
+        <h3>Personas mayores</h3>
+        <p>Clases suaves y adaptadas. Ideal para mantenerse activo, con buena energía y mejor ánimo.</p>
+      </div>
+      <div class="card card-familias reveal">
+        <span class="card-emoji">👨‍👩‍👧‍👦</span>
+        <div class="card-text">
+          <h3>Familias</h3>
+          <p>¡Aprended juntos! Las clases en familia son las más especiales. Compartid risas y pasos que no olvidaréis.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESTILOS -->
+<section class="estilos">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Los ritmos</p>
+      <h2 class="section-title">Elige tu <em>música favorita</em></h2>
+      <p class="section-body" style="color:rgba(255,255,255,0.6)">Tres estilos latinos que conquistan el mundo entero — y que aprenderás a bailar más rápido de lo que imaginas.</p>
+    </div>
+    <div class="ritmos-grid reveal">
+      <div class="ritmo-card">
+        <span class="ritmo-emoji">🔥</span>
+        <h3>Salsa</h3>
+        <p>Energía pura, sabor cubano y pasos que enamoran. El rey de las pistas.</p>
+      </div>
+      <div class="ritmo-card">
+        <span class="ritmo-emoji">🌹</span>
+        <h3>Bachata</h3>
+        <p>Romántica y sensual. Perfecta para bailar en pareja o solo descubrir tu lado expresivo.</p>
+      </div>
+      <div class="ritmo-card">
+        <span class="ritmo-emoji">🥁</span>
+        <h3>Merengue</h3>
+        <p>El más fácil para empezar. Ritmo caribeño que te pone a mover los pies en 5 minutos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFICIOS -->
+<section class="beneficios">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Por qué elegirnos</p>
+      <h2 class="section-title">Clases que <em>de verdad</em> funcionan</h2>
+    </div>
+    <div class="beneficios-grid">
+      <div class="beneficio reveal">
+        <span class="beneficio-icon">🌱</span>
+        <h4>Aprende desde cero</h4>
+        <p>No hace falta ninguna experiencia. Empezamos por el principio, contigo.</p>
+      </div>
+      <div class="beneficio reveal">
+        <span class="beneficio-icon">⏱️</span>
+        <h4>A tu ritmo</h4>
+        <p>Tú marcas el ritmo de aprendizaje. Sin prisa, sin agobios.</p>
+      </div>
+      <div class="beneficio reveal">
+        <span class="beneficio-icon">😊</span>
+        <h4>Sin presión</h4>
+        <p>El ambiente es relajado y amable. Equivocarse es parte del aprendizaje.</p>
+      </div>
+      <div class="beneficio reveal">
+        <span class="beneficio-icon">🎉</span>
+        <h4>Diversión asegurada</h4>
+        <p>Las clases se pasan volando. Te irás con ganas de más.</p>
+      </div>
+      <div class="beneficio reveal">
+        <span class="beneficio-icon">🧠</span>
+        <h4>Mejora coordinación</h4>
+        <p>El baile ejercita el cuerpo y la mente. Notarás la diferencia.</p>
+      </div>
+      <div class="beneficio reveal">
+        <span class="beneficio-icon">✨</span>
+        <h4>Más confianza</h4>
+        <p>Bailar cambia cómo te sientes contigo mismo. Para siempre.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section class="como">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Así de fácil</p>
+      <h2 class="section-title">Empieza en<br><em>3 pasos</em></h2>
+    </div>
+    <div class="pasos">
+      <div class="paso reveal">
+        <div class="paso-num">1</div>
+        <div class="paso-content">
+          <h4>Escríbeme por WhatsApp</h4>
+          <p>Cuéntame quién quiere bailar, tu zona de Barcelona y qué horarios te vienen bien. Respondo rápido.</p>
+        </div>
+      </div>
+      <div class="paso reveal">
+        <div class="paso-num">2</div>
+        <div class="paso-content">
+          <h4>Acordamos día y lugar</h4>
+          <p>Eliges si prefieres que vaya yo a tu casa o si vienes al mío. Totalmente flexible.</p>
+        </div>
+      </div>
+      <div class="paso reveal">
+        <div class="paso-num">3</div>
+        <div class="paso-content">
+          <h4>¡Primera clase gratis!</h4>
+          <p>La primera sesión es de prueba, sin compromiso. Si te gusta —y te va a gustar— seguimos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UBICACIÓN -->
+<section class="ubicacion" id="ubicacion">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Dónde estamos</p>
+      <h2 class="section-title">Clases en <em>Barcelona</em></h2>
+    </div>
+    <div class="ubicacion-card reveal">
+      <span class="ubicacion-icon">📍</span>
+      <h3>En tu barrio</h3>
+      <p>Ofrezco clases a domicilio en toda Barcelona. También puedes venir a mi espacio en el centro.</p>
+      <p><strong>¿No ves tu barrio? Pregúntame igual — seguro que llegamos a un acuerdo.</strong></p>
+      <div class="barrios">
+        <span class="barrio-chip">Gràcia</span>
+        <span class="barrio-chip">Eixample</span>
+        <span class="barrio-chip">Sarrià</span>
+        <span class="barrio-chip">Sant Andreu</span>
+        <span class="barrio-chip">Poblenou</span>
+        <span class="barrio-chip">Sants</span>
+        <span class="barrio-chip">Horta</span>
+        <span class="barrio-chip">Les Corts</span>
+        <span class="barrio-chip">Gòtic</span>
+        <span class="barrio-chip">+ más</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA PRINCIPAL -->
+<section class="cta-main" id="empieza">
+  <div class="container" style="position:relative; z-index:1;">
+    <p class="section-label reveal">¡No lo dejes para mañana!</p>
+    <h2 class="section-title reveal">Empieza hoy<br>a <em>bailar</em></h2>
+    <p class="section-body reveal">La primera clase de prueba es gratis y sin compromiso. ¿A qué esperas?</p>
+    <div class="prueba-badge reveal">🎁 Primera clase gratis · Sin compromiso</div>
+    <div class="cta-btns reveal">
+      <a href="https://wa.me/34600000000?text=Hola!%20Quiero%20reservar%20mi%20primera%20clase%20de%20baile%20gratis%20😊" class="btn-wa-big" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Reserva tu clase gratis por WhatsApp
+      </a>
+      <a href="tel:+34600000000" class="btn-primary">📞 Llámame ahora</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto" id="contacto">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Contacto</p>
+      <h2 class="section-title">¿Hablamos?</h2>
+      <p class="section-body">Estoy disponible para cualquier pregunta. Respondo siempre en el mismo día.</p>
+    </div>
+    <div class="contacto-grid reveal">
+      <a href="tel:+34600000000" class="contacto-card">
+        <div class="cc-icon phone">📞</div>
+        <div>
+          <div class="cc-label">Teléfono</div>
+          <div class="cc-value">+34 600 000 000</div>
+          <div class="cc-sub">Lunes a domingo · 9h–21h</div>
+        </div>
+      </a>
+      <a href="https://wa.me/34600000000?text=Hola!%20Me%20interesa%20una%20clase%20de%20baile%20latino%20😊" class="contacto-card wa" target="_blank" rel="noopener">
+        <div class="cc-icon wa-icon">
+          <svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <div>
+          <div class="cc-label">WhatsApp</div>
+          <div class="cc-value">Escríbeme ahora</div>
+          <div class="cc-sub">Respondo en menos de 1 hora</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Baila<span>Conmigo</span></div>
+  <p>Clases de baile latino en Barcelona · Salsa · Bachata · Merengue</p>
+  <p style="margin-top:8px;">© 2025 · Hecho con ❤️ y mucho ritmo</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Staggered reveal for grids
+  document.querySelectorAll('.cards-grid .card, .beneficios-grid .beneficio, .ritmos-grid .ritmo-card').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 80}ms`;
+  });
+</script>
+</body>
+</html>
